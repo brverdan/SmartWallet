@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationTickets"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,7 +22,7 @@
         app:navGraph="@navigation/navigation_graph" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+        android:id="@+id/bottomNavigationTickets"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="#16A240"

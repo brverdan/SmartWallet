@@ -8,7 +8,7 @@
     tools:context=".MainFragment">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+        android:id="@+id/bottomNavigationTickets"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="#06A50C"

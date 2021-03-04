@@ -16,6 +16,7 @@
         android:clickable="true"
         android:src="@android:drawable/ic_input_add"
         app:backgroundTint="#029A08"
+        app:fabCustomSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
