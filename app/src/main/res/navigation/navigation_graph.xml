@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.infnet.smartwallet.ui.user.login.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" />
+    <fragment
+        android:id="@+id/cadastroFragment"
+        android:name="com.infnet.smartwallet.ui.user.cadastro.CadastroFragment"
+        android:label="cadastro_fragment"
+        tools:layout="@layout/cadastro_fragment" />
+    <fragment
+        android:id="@+id/listTicketsFragment"
+        android:name="com.infnet.smartwallet.ui.ticket.list.ListTicketsFragment"
+        android:label="list_tickets_fragment"
+        tools:layout="@layout/list_tickets_fragment" />
+    <fragment
+        android:id="@+id/detailsTicketFragment"
+        android:name="com.infnet.smartwallet.ui.ticket.details.DetailsTicketFragment"
+        android:label="details_ticket_fragment"
+        tools:layout="@layout/details_ticket_fragment" />
+    <fragment
+        android:id="@+id/formTicketFragment"
+        android:name="com.infnet.smartwallet.ui.ticket.form.FormTicketFragment"
+        android:label="form_ticket_fragment"
+        tools:layout="@layout/form_ticket_fragment" />
+    <fragment
+        android:id="@+id/detailsUserFragment"
+        android:name="com.infnet.smartwallet.ui.user.details.DetailsUserFragment"
+        android:label="details_user_fragment"
+        tools:layout="@layout/details_user_fragment" />
+    <fragment
+        android:id="@+id/formUserFragment"
+        android:name="com.infnet.smartwallet.ui.user.form.FormUserFragment"
+        android:label="form_user_fragment"
+        tools:layout="@layout/form_user_fragment" />
+</navigation>
