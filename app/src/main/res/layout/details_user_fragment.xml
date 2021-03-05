@@ -5,4 +5,113 @@
     android:id="@+id/frameLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.user.details.DetailsUserFragment" />
+    tools:context=".ui.user.details.DetailsUserFragment" >
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabEditUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="70dp"
+        android:clickable="true"
+        android:src="@android:drawable/ic_menu_edit"
+        app:backgroundTint="#2196F3"
+        app:fabCustomSize="50sp"
+        app:fabSize="auto"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:rippleColor="#2196F3" />
+
+    <TextView
+        android:id="@+id/textViewQntdTicketsDetailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:hint="Tickets..."
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textLabelQntdTicketsDetailUser"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailDetailUser" />
+
+    <TextView
+        android:id="@+id/textLabelQntdTicketsDetailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Quantidade de Tickets -"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLabelEmailDetailUser" />
+
+    <TextView
+        android:id="@+id/textLabelEmailDetailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="E-mail -"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLabelSobrenomeDetailUser" />
+
+    <TextView
+        android:id="@+id/textViewEmailDetailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:hint="E-mail..."
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textLabelEmailDetailUser"
+        app:layout_constraintTop_toBottomOf="@+id/textViewSobrenomeDetailUser" />
+
+    <TextView
+        android:id="@+id/textLabelSobrenomeDetailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Sobrenome -"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLabelNomeDetailUser" />
+
+    <TextView
+        android:id="@+id/textViewSobrenomeDetailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:hint="Sobrenome..."
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textLabelSobrenomeDetailUser"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomeDetailUser" />
+
+    <TextView
+        android:id="@+id/textLabelNomeDetailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="80dp"
+        android:text="Nome -"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewNomeDetailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="80dp"
+        android:hint="Nome..."
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textLabelNomeDetailUser"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
