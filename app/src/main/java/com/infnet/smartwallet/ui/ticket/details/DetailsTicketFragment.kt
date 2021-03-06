@@ -40,6 +40,10 @@ class DetailsTicketFragment : Fragment() {
             findNavController().popBackStack()
         }
 
+        fabEditTicket.setOnClickListener {
+            findNavController().navigate(R.id.formTicketFragment)
+        }
+
         fabDeleteTicket.setOnClickListener {
             // TODO: Pop-up confirmacao
             findNavController().popBackStack()
