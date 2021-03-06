@@ -1,5 +1,6 @@
 package com.infnet.smartwallet
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -15,8 +16,7 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationTickets.setupWithNavController(findNavController(R.id.navHostFragment))
 
-       // val alo: BottomNavigationView = findViewById(R.id.bottomNavigationTickets)
-       // alo.visibility = View.GONE
-
+       val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigationTickets)
+       bottomNavigationView.visibility = View.GONE
     }
 }

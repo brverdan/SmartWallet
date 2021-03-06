@@ -14,9 +14,9 @@ import com.infnet.smartwallet.model.Ticket
 
 
 class RecyclerListTicketAdapter(
-    private val tickets: List<Ticket>)
-    //val actionClick: (Ticket) -> Unit)
-    : RecyclerView.Adapter<RecyclerListTicketAdapter.TicketsViewHolder>() {
+    private val tickets: List<Ticket>,
+    val actionClick: (Ticket) -> Unit
+) : RecyclerView.Adapter<RecyclerListTicketAdapter.TicketsViewHolder>() {
 
     class TicketsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val txtNomeTicket: TextView = itemView.findViewById(R.id.txtNomeTicket)
@@ -59,5 +59,9 @@ class RecyclerListTicketAdapter(
 //            .addOnFailureListener {
 //                Log.i("FirebaseStorage", "Falhou: ${it.message}")
 //            }
+
+        holder.itemView.setOnClickListener {
+            actionClick(ticket)
+        }
     }
 }

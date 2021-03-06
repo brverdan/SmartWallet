@@ -6,14 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.infnet.smartwallet.R
+import kotlinx.android.synthetic.main.cadastro_fragment.*
 
 class CadastroFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = CadastroFragment()
-    }
-
     private lateinit var viewModel: CadastroViewModel
 
     override fun onCreateView(
@@ -23,10 +20,15 @@ class CadastroFragment : Fragment() {
         return inflater.inflate(R.layout.cadastro_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CadastroViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
+        btnCadastrar.setOnClickListener {
+            findNavController().navigate(R.id.loginFragment)
+        }
+
+        imageViewBackCadastro.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
 }
