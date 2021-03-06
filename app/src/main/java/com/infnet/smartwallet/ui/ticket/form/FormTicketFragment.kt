@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.infnet.smartwallet.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.form_ticket_fragment.*
+import kotlinx.android.synthetic.main.form_user_fragment.*
 
 class FormTicketFragment : Fragment() {
 
@@ -42,6 +43,13 @@ class FormTicketFragment : Fragment() {
 
         imageViewBackFormTicket.setOnClickListener {
             findNavController().popBackStack()
+        }
+
+        fabSaveTicket.setOnClickListener {
+            // if (TicketUtil.ticketSelecionado == null)
+                findNavController().navigate(R.id.listTicketsFragment)
+
+            // findNavController().navigate(R.id.detailsTicketFragment)
         }
     }
 }
