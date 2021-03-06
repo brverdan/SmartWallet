@@ -15,8 +15,8 @@ class MainActivity : AppCompatActivity() {
 
         bottomNavigationTickets.setupWithNavController(findNavController(R.id.navHostFragment))
 
-       // val piru: BottomNavigationView = findViewById(R.id.bottomNavigationTickets)
-        // piru.visibility = View.GONE
+       // val alo: BottomNavigationView = findViewById(R.id.bottomNavigationTickets)
+       // alo.visibility = View.GONE
 
     }
 }
