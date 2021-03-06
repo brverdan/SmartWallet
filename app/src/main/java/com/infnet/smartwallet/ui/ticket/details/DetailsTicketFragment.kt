@@ -39,5 +39,10 @@ class DetailsTicketFragment : Fragment() {
         imageViewBackDetailsTicket.setOnClickListener {
             findNavController().popBackStack()
         }
+
+        fabDeleteTicket.setOnClickListener {
+            // TODO: Pop-up confirmacao
+            findNavController().popBackStack()
+        }
     }
 }
