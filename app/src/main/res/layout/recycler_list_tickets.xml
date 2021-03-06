@@ -33,21 +33,12 @@
         android:id="@+id/txtDataTicket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="32dp"
         android:layout_marginBottom="5dp"
         android:hint="Data"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/txtHoraTicket"
+        app:layout_constraintStart_toEndOf="@+id/imgCategoriaTicket"
         app:layout_constraintTop_toBottomOf="@+id/txtNomeTicket" />
 
-    <TextView
-        android:id="@+id/txtHoraTicket"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="5dp"
-        android:hint="hora"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNomeTicket" />
 </androidx.constraintlayout.widget.ConstraintLayout>
