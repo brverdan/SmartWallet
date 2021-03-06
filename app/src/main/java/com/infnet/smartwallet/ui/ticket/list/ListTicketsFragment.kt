@@ -22,7 +22,6 @@ class ListTicketsFragment : Fragment() {
 
         viewModel = ViewModelProvider(this).get(ListTicketsViewModel::class.java)
         viewModel.add()
-        viewModel.sla()
         viewModel.tickets.observe(viewLifecycleOwner){
             recyclerlistTickets.adapter = RecyclerListTicketAdapter(it)
             recyclerlistTickets.layoutManager = LinearLayoutManager(requireContext())

@@ -6,23 +6,14 @@ import androidx.lifecycle.ViewModel
 import com.infnet.smartwallet.model.Ticket
 
 class ListTicketsViewModel : ViewModel() {
-    private val _tickets = MutableLiveData<List<Ticket>>()
-    val ticket = Ticket("Cinema", "Norte Shopping", null, "CINEMA")
-    var lista = mutableListOf<Ticket>()
+    private val _tickets = MutableLiveData<MutableList<Ticket>>()
+    val tickets: LiveData<MutableList<Ticket>> = _tickets
 
-
-    val tickets: LiveData<List<Ticket>> = _tickets
+     init {
+         _tickets.value = mutableListOf<Ticket>()
+     }
 
     fun add (){
-        lista.add(ticket)
+        _tickets.value!!.add(Ticket("Cinema", "Norte Shopping", null, "CINEMA"))
     }
-
-    fun sla(){
-        _tickets.value = lista
-    }
-
-
-
-
-    
 }
