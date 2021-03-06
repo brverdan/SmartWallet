@@ -13,7 +13,7 @@ class ListTicketsViewModel : ViewModel() {
          _tickets.value = mutableListOf<Ticket>()
      }
 
-    fun add (){
+    fun add () {
         _tickets.value!!.add(Ticket("Cinema", "Norte Shopping", null, "CINEMA"))
     }
 }
