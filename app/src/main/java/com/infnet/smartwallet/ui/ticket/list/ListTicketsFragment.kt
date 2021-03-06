@@ -9,24 +9,20 @@ import androidx.lifecycle.ViewModelProvider
 import com.infnet.smartwallet.R
 
 class ListTicketsFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = ListTicketsFragment()
-    }
-
     private lateinit var viewModel: ListTicketsViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.list_tickets_fragment, container, false)
+        var view = inflater.inflate(R.layout.list_tickets_fragment, container, false)
+
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(ListTicketsViewModel::class.java)
-        // TODO: Use the ViewModel
     }
 
 }
