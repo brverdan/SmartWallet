@@ -11,7 +11,7 @@ interface TicketDao {
 
     fun delete(ticket: Ticket) : Task<Void>
 
-    fun all(): Task<QuerySnapshot>
+    fun all(): Query
 
     fun read(key: String): Query
 

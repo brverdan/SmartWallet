@@ -12,11 +12,14 @@ class ListTicketsViewModel(private val ticketDao: TicketDao) : ViewModel() {
     val tickets: LiveData<MutableList<Ticket>> = _tickets
 
     fun attListTickets () {
-        ticketDao.all().addOnSuccessListener {
-            val ticketFB = it.toObjects(Ticket::class.java)
-            _tickets.value = ticketFB
-        }.addOnFailureListener {
-            Log.i("ListTicketsFrag", "${it.message}")
+        ticketDao.all().addSnapshotListener { value, error ->
+            if (error != null) {
+                Log.i("FirebaseFirestore", "${error.message}")
+            } else {
+                if (value != null && !value.isEmpty) {
+                    _tickets.value = value.toObjects(Ticket::class.java)
+                }
+            }
         }
     }
 }

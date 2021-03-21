@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.infnet.smartwallet.R
@@ -23,6 +24,16 @@ class LoginFragment : Fragment() {
     ): View? {
         var view = inflater.inflate(R.layout.login_fragment, container, false)
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewModel.status.observe(viewLifecycleOwner, Observer {
+            if(it){
+                findNavController().navigate(R.id.listTicketsFragment)
+            }
+        })
+
+        viewModel.msg.observe(viewLifecycleOwner, Observer {
+            if(!it.isNullOrBlank())
+                makeToast(it)
+        })
         return view
     }
 
@@ -30,19 +41,20 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btnLogin.setOnClickListener {
-            if (viewModel.authenticate())
-                findNavController().navigate(R.id.listTicketsFragment)
+            val email = editTextEmailLogin.text.toString()
+            val senha = editTextSenhaLogin.text.toString()
+            if(!email.isNullOrBlank() && !senha.isNullOrBlank()) {
+                viewModel.verificarCredenciais(email, senha)
+            }
             else {
-                Toast.makeText(
-                    requireContext(),
-                    "Login não sucedido!",
-                    Toast.LENGTH_SHORT
-                ).show()
+                makeToast("Email e Senha obrigatórios.")
             }
         }
-
         textViewCadastro.setOnClickListener {
             findNavController().navigate(R.id.cadastroFragment)
         }
+    }
+    private fun makeToast(msg: String) {
+        Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
     }
 }

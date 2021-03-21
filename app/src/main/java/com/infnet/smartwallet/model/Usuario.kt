@@ -8,6 +8,7 @@ class Usuario (
         var sobrenome: String? = null,
         var email: String? = null,
         var firebaseUser : FirebaseUser? = null,
+        var qntdTickets : Int = 0,
         @DocumentId
         var uid: String? = null
 )

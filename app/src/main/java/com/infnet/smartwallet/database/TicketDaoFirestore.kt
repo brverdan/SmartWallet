@@ -16,7 +16,7 @@ class TicketDaoFirestore : TicketDao {
     private val firebaseAuth = FirebaseAuth.getInstance()
 
     override fun insert(ticket: Ticket): Task<DocumentReference> {
-        //ticket.usuarioId = firebaseAuth.currentUser.uid
+        ticket.usuarioId = firebaseAuth.currentUser.uid
         return collection.add(ticket)
     }
 
@@ -24,8 +24,8 @@ class TicketDaoFirestore : TicketDao {
         return collection.document(ticket.id!!).delete()
     }
 
-    override fun all(): Task<QuerySnapshot> {
-        return collection.get()
+    override fun all(): Query {
+        return collection.whereEqualTo("usuarioId", firebaseAuth.currentUser.uid)
     }
 
     override fun read(key: String): Query {
