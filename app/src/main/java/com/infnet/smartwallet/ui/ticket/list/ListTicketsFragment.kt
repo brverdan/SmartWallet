@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.infnet.smartwallet.R
 import com.infnet.smartwallet.adapter.RecyclerListTicketAdapter
+import com.infnet.smartwallet.database.ObjetoUtil
 import com.infnet.smartwallet.database.TicketDaoFirestore
 import kotlinx.android.synthetic.main.cadastro_fragment.*
 import kotlinx.android.synthetic.main.list_tickets_fragment.*
@@ -28,6 +29,7 @@ class ListTicketsFragment : Fragment() {
         viewModel = ViewModelProvider(this, listTicketsViewModelFactory).get(ListTicketsViewModel::class.java)
         viewModel.tickets.observe(viewLifecycleOwner){
             recyclerlistTickets.adapter = RecyclerListTicketAdapter(it) {
+                ObjetoUtil.ticketSelecionado = it
                 findNavController().navigate(R.id.detailsTicketFragment)
             }
             recyclerlistTickets.layoutManager = LinearLayoutManager(requireContext())
@@ -44,6 +46,7 @@ class ListTicketsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         fabAddTicket.setOnClickListener {
+            ObjetoUtil.ticketSelecionado = null
             findNavController().navigate(R.id.formTicketFragment)
         }
     }

@@ -28,6 +28,7 @@ class FormTicketViewModel(private val ticketDao: TicketDao) : ViewModel() {
 
         if(ObjetoUtil.ticketSelecionado != null){
             ticket.id = ObjetoUtil.ticketSelecionado!!.id
+            ticket.usuarioId = ObjetoUtil.ticketSelecionado!!.usuarioId
             ticketDao.edit(ticket)
         }
         else{

@@ -9,6 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.infnet.smartwallet.R
+import com.infnet.smartwallet.database.ObjetoUtil
+import com.infnet.smartwallet.database.TicketDaoFirestore
+import com.infnet.smartwallet.model.Ticket
 import kotlinx.android.synthetic.main.details_ticket_fragment.*
 import kotlinx.android.synthetic.main.form_ticket_fragment.*
 
@@ -36,6 +39,10 @@ class DetailsTicketFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        super.onViewCreated(view, savedInstanceState)
+        if (ObjetoUtil.ticketSelecionado != null)
+            preencherDetails(ObjetoUtil.ticketSelecionado!!)
+
         imageViewBackDetailsTicket.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -45,8 +52,15 @@ class DetailsTicketFragment : Fragment() {
         }
 
         fabDeleteTicket.setOnClickListener {
-            // TODO: Pop-up confirmacao
+            TicketDaoFirestore().delete(ObjetoUtil.ticketSelecionado!!)
             findNavController().popBackStack()
         }
+    }
+    private fun preencherDetails (ticket: Ticket){
+        textViewLocalDetail.setText(ticket.local)
+        textViewDataDetail.setText(ticket.data)
+        textViewHorarioDetail.setText(ticket.hora)
+        textViewNomeDetail.setText(ticket.nome)
+        textViewCategoriaDetail.setText(ticket.categoria)
     }
 }

@@ -7,6 +7,53 @@
     android:layout_height="match_parent"
     tools:context=".ui.ticket.details.DetailsTicketFragment" >
 
+    <TextView
+        android:id="@+id/textViewCategoriaDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:hint="Categoria..."
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textLabelCategoriaDetail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHorarioDetail" />
+
+    <TextView
+        android:id="@+id/textLabelCategoriaDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Categoria -"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textLabelHorarioDetail" />
+
+    <TextView
+        android:id="@+id/textViewNomeDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:hint="Nome..."
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/textLabelNomeDetail"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/textLabelNomeDetail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:text="Nome Ticket - "
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -22,24 +69,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:text="Local - "
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/textLabelNomeDetail" />
 
     <TextView
         android:id="@+id/textViewLocalDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:hint="Local..."
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textLabelLocalDetail"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomeDetail" />
 
     <TextView
         android:id="@+id/textLabelDataDetail"
@@ -91,14 +138,14 @@
         android:id="@+id/textLabelCodigoDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:shadowColor="#000000"
         android:text="Código de Barras"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHorarioDetail" />
+        app:layout_constraintTop_toBottomOf="@+id/textLabelCategoriaDetail" />
 
     <TextView
         android:id="@+id/textViewCodigoDetail"

@@ -88,8 +88,6 @@ class FormTicketFragment : Fragment() {
         }
 
         fabSaveTicket.setOnClickListener {
-
-
             val local = editTextLocalAddTicket.text.toString()
             val nome = editTextNomeAddTicket.text.toString()
             val data = editTextDataAddTicket.text.toString()
@@ -99,6 +97,9 @@ class FormTicketFragment : Fragment() {
                 makeToast("Categoria deve ser selecionada!!")
             }
             viewModel.salvarTicket(nome, local, data, hora, categoria!!)
+            if(ObjetoUtil.ticketSelecionado != null) {
+                findNavController().popBackStack(R.id.listTicketsFragment, false)
+            }
         }
     }
 
@@ -107,7 +108,7 @@ class FormTicketFragment : Fragment() {
         editTextNomeAddTicket.setText(ticket.nome)
         editTextDataAddTicket.setText(ticket.data)
         editTextHoraAddTicket.setText(ticket.hora)
-        //spinnerCategoriaAddTicket.onItemSelectedListener = ticket.categoria
+        spinnerCategoriaAddTicket.setSelection((spinnerCategoriaAddTicket.getAdapter() as? ArrayAdapter<String>)!!.getPosition(ticket.categoria))
     }
 
     private fun makeToast(msg: String) {
