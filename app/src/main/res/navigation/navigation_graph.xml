@@ -37,7 +37,7 @@
         tools:layout="@layout/details_user_fragment" />
     <fragment
         android:id="@+id/formUserFragment"
-        android:name="com.infnet.smartwallet.ui.user.update.FormUserFragment"
+        android:name="com.infnet.smartwallet.ui.user.update.UpdateUserFragment"
         android:label="form_user_fragment"
         tools:layout="@layout/form_user_fragment" />
 </navigation>

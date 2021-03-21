@@ -68,6 +68,7 @@ class CadastroFragment : Fragment() {
             findNavController().popBackStack()
         }
     }
+
     private fun makeToast(msg: String) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
     }

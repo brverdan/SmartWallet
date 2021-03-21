@@ -31,4 +31,9 @@ object UsuarioFirebaseDao {
         val firebaseUser = firebaseAuth.currentUser
         return collection.document(firebaseUser!!.uid).get()
     }
+
+    fun atualizarNomeSobrenome(nome: String, sobrenome: String, uid: String): Task<Void> {
+        collection.document(uid).update("nome", nome)
+        return collection.document(uid).update("sobrenome", sobrenome)
+    }
 }

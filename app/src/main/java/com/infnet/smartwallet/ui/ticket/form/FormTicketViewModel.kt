@@ -11,8 +11,10 @@ import com.infnet.smartwallet.model.Ticket
 class FormTicketViewModel(private val ticketDao: TicketDao) : ViewModel() {
     private val _status = MutableLiveData<Boolean>()
     val status: LiveData<Boolean> = _status
+
     private val _message = MutableLiveData<String?>()
     val message: LiveData<String?> = _message
+
     var categoriaSelecionadaString : String? = null
 
     init{
