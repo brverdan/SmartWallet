@@ -1,4 +1,4 @@
-package com.infnet.smartwallet.ui.user.form
+package com.infnet.smartwallet.ui.user.update
 
 import androidx.lifecycle.ViewModel
 

@@ -1,17 +1,22 @@
 package com.infnet.smartwallet.database
 
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.QuerySnapshot
 import com.infnet.smartwallet.model.Ticket
+import kotlin.random.Random
+
 
 class TicketDaoFirestore : TicketDao {
 
     private val collection = FirebaseFirestore.getInstance().collection("tickets")
+    private val firebaseAuth = FirebaseAuth.getInstance()
 
     override fun insert(ticket: Ticket): Task<DocumentReference> {
+        //ticket.usuarioId = firebaseAuth.currentUser.uid
         return collection.add(ticket)
     }
 

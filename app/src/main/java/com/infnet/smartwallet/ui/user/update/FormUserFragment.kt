@@ -1,4 +1,4 @@
-package com.infnet.smartwallet.ui.user.form
+package com.infnet.smartwallet.ui.user.update
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.infnet.smartwallet.R
-import kotlinx.android.synthetic.main.form_ticket_fragment.*
 import kotlinx.android.synthetic.main.form_user_fragment.*
 
 class FormUserFragment : Fragment() {
