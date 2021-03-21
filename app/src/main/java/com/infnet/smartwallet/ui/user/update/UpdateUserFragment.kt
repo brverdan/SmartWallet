@@ -33,22 +33,19 @@ class UpdateUserFragment : Fragment() {
         return  view
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        var nome = editTextNomeUpdateUsuario.text.toString()
-        var sobrenome = editTextSobrenomeUpdateUsuario.text.toString()
-
-        if(!nome.isNullOrBlank() && !sobrenome.isNullOrBlank()) {
-                    viewModel.updateUsuario(nome, sobrenome)
-        }
-        else {
-            makeToast("Todos os campos devem ser preenchidos!")
-        }
-
         fabSaveUpdateUsuario.setOnClickListener {
-            findNavController().navigate(R.id.detailsUserFragment)
+            var nome = editTextNomeUpdateUsuario.text.toString()
+            var sobrenome = editTextSobrenomeUpdateUsuario.text.toString()
+
+            if(!nome.isNullOrBlank() && !sobrenome.isNullOrBlank()) {
+                viewModel.updateUsuario(nome, sobrenome)
+            }
+            else {
+                makeToast("Todos os campos devem ser preenchidos!")
+            }
         }
     }
 
