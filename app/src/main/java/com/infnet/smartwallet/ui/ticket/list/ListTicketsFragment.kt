@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.infnet.smartwallet.R
 import com.infnet.smartwallet.adapter.RecyclerListTicketAdapter
+import com.infnet.smartwallet.database.TicketDaoFirestore
 import kotlinx.android.synthetic.main.cadastro_fragment.*
 import kotlinx.android.synthetic.main.list_tickets_fragment.*
 
@@ -22,15 +23,16 @@ class ListTicketsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.list_tickets_fragment, container, false)
+        val listTicketsViewModelFactory = ListTicketViewModelFactory(TicketDaoFirestore())
 
-        viewModel = ViewModelProvider(this).get(ListTicketsViewModel::class.java)
-        viewModel.add()
+        viewModel = ViewModelProvider(this, listTicketsViewModelFactory).get(ListTicketsViewModel::class.java)
         viewModel.tickets.observe(viewLifecycleOwner){
             recyclerlistTickets.adapter = RecyclerListTicketAdapter(it) {
                 findNavController().navigate(R.id.detailsTicketFragment)
             }
             recyclerlistTickets.layoutManager = LinearLayoutManager(requireContext())
         }
+        viewModel.attListTickets()
 
         val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigationTickets)
         bottomNavigationView.visibility = View.VISIBLE
