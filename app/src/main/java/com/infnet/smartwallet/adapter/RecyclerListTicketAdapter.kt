@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.infnet.smartwallet.R
+import com.infnet.smartwallet.enums.CategoriaEnum
 import com.infnet.smartwallet.model.Ticket
 
 
@@ -38,27 +39,29 @@ class RecyclerListTicketAdapter(
 
         var mBitmapIds = arrayListOf<Int>()
         var uris = arrayListOf<Uri>()
-        mBitmapIds.add(R.drawable.ticket_icon)
-        uris.add(Uri.parse("android.resource://com.infnet.smartwallet/drawable/" + mBitmapIds[0]))
+        mBitmapIds.add(CategoriaEnum.CINEMA.caminho)
+        mBitmapIds.add(CategoriaEnum.TEATRO.caminho)
+        mBitmapIds.add(CategoriaEnum.FESTA.caminho)
+        mBitmapIds.add(CategoriaEnum.SHOW.caminho)
+        mBitmapIds.add(CategoriaEnum.EVENTOESPORTIVO.caminho)
 
-//        val uri =
-//            Uri.parse("android.resource://"+ java.lang.Package.getPackage("com.infnet.smartwallet") + R.drawable.ticket_icon)
+        if(ticket.categoria == "Cinema") {
+            uris.add(Uri.parse("android.resource://com.infnet.smartwallet/drawable/" + mBitmapIds[0]))
+        }
+        else if(ticket.categoria == "Teatro") {
+            uris.add(Uri.parse("android.resource://com.infnet.smartwallet/drawable/" + mBitmapIds[1]))
+        }
+        else if(ticket.categoria == "Festa") {
+            uris.add(Uri.parse("android.resource://com.infnet.smartwallet/drawable/" + mBitmapIds[2]))
+        }
+        else if(ticket.categoria == "Show") {
+            uris.add(Uri.parse("android.resource://com.infnet.smartwallet/drawable/" + mBitmapIds[3]))
+        }
+        else {
+            uris.add(Uri.parse("android.resource://com.infnet.smartwallet/drawable/" + mBitmapIds[4]))
+        }
 
         holder.imgCategoria.setImageURI(uris[0])
-
-//        holder.itemView.setOnClickListener {
-//            actionClick(pessoa)
-//        }
-
-//        storageReference.child("yuri/foto0.png")
-//            .getBytes(1024*1024*1024)
-//            .addOnSuccessListener {
-//                val bitmap = BitmapFactory.decodeByteArray(it, 0 , it.size)
-//                holder.imgPessoa.setImageBitmap(bitmap)
-//            }
-//            .addOnFailureListener {
-//                Log.i("FirebaseStorage", "Falhou: ${it.message}")
-//            }
 
         holder.itemView.setOnClickListener {
             actionClick(ticket)

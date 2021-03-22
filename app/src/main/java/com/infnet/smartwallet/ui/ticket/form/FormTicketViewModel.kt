@@ -31,8 +31,8 @@ class FormTicketViewModel(application: Application, private val ticketDao: Ticke
 
     var categoriaSelecionadaString : String? = null
 
-    private val _imagemPerfil = MutableLiveData<Uri>()
-    var imagemPerfil: LiveData<Uri> = _imagemPerfil
+    private val _imagemTicket = MutableLiveData<Uri>()
+    var imagemTicket: LiveData<Uri> = _imagemTicket
 
     init {
         _status.value = false
@@ -88,7 +88,7 @@ class FormTicketViewModel(application: Application, private val ticketDao: Ticke
         if(ObjetoUtil.ticketSelecionado!!.nome != null) {
             ticketDao.receberImagem(usuarioId, file, ObjetoUtil.ticketSelecionado!!.nome!!)
                     .addOnSuccessListener {
-                        _imagemPerfil.value = file.toUri()
+                        _imagemTicket.value = file.toUri()
                         val bitmap = BitmapFactory.decodeFile(file.path)
                         fotoPerfil = bitmap
                     }

@@ -102,6 +102,9 @@ class FormTicketFragment : Fragment() {
             if(categoria == "Selecionar Categoria") {
                 makeToast("Categoria deve ser selecionada!!")
             }
+            if (viewModel.imagemTicket == null) {
+                makeToast("A foto do código de barras/QrCode é obrigatória")
+            }
             viewModel.salvarTicket(nome, local, data, hora, categoria!!)
         }
 
@@ -138,7 +141,7 @@ class FormTicketFragment : Fragment() {
         spinnerCategoriaAddTicket.setSelection((spinnerCategoriaAddTicket.getAdapter() as? ArrayAdapter<String>)!!.getPosition(ticket.categoria))
 
         viewModel.receberFoto()
-        viewModel.imagemPerfil.observe(viewLifecycleOwner, Observer { foto ->
+        viewModel.imagemTicket.observe(viewLifecycleOwner, Observer { foto ->
             if(foto != null) {
                 imageViewAddTicketImage.setImageURI(foto)
             }
