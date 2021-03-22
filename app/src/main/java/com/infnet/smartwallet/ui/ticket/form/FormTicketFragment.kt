@@ -1,14 +1,21 @@
 package com.infnet.smartwallet.ui.ticket.form
 
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -17,15 +24,11 @@ import com.infnet.smartwallet.database.ObjetoUtil
 import com.infnet.smartwallet.database.TicketDaoFirestore
 import com.infnet.smartwallet.model.Ticket
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.details_ticket_fragment.*
 import kotlinx.android.synthetic.main.form_ticket_fragment.*
 import kotlinx.android.synthetic.main.form_user_fragment.*
 
 class FormTicketFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = FormTicketFragment()
-    }
-
     private lateinit var viewModel: FormTicketViewModel
 
     override fun onCreateView(
@@ -37,22 +40,25 @@ class FormTicketFragment : Fragment() {
         val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigationTickets)
         bottomNavigationView.visibility = View.GONE
 
-        val formTicketViewModelFactory = FormTicketViewModelFactory(TicketDaoFirestore())
+        val formTicketViewModelFactory = FormTicketViewModelFactory(requireActivity().application, TicketDaoFirestore())
 
         viewModel = ViewModelProvider(this, formTicketViewModelFactory).get(FormTicketViewModel::class.java)
 
         viewModel.let {
-            it.message.observe(viewLifecycleOwner) { message ->
+            it.message.observe(viewLifecycleOwner, Observer { message ->
                 if(!message.isNullOrBlank()) {
                     makeToast(message)
                 }
-            }
-            it.status.observe(viewLifecycleOwner) { status ->
-                if(status) {
-                    findNavController().popBackStack(R.id.listTicketsFragment, false)
-                }
-            }
+            })
+            it.status.observe(viewLifecycleOwner, Observer { status ->
+                    if(status) {
+                        findNavController().popBackStack(R.id.listTicketsFragment, false)
+                    }
+            })
+
         }
+
+
 
         return view
     }
@@ -97,9 +103,30 @@ class FormTicketFragment : Fragment() {
                 makeToast("Categoria deve ser selecionada!!")
             }
             viewModel.salvarTicket(nome, local, data, hora, categoria!!)
-            if(ObjetoUtil.ticketSelecionado != null) {
-                findNavController().popBackStack(R.id.listTicketsFragment, false)
-            }
+        }
+
+        imageViewAddTicketImage.setOnClickListener {
+            tirarFoto()
+        }
+    }
+
+    private fun tirarFoto() {
+        val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        //startActivityForResult(intent, 200)
+        //if(intent.resolveActivity(requireActivity().packageManager) != null){
+        startActivityForResult(intent, 200)
+        //}
+        //else {
+        //   makeToast("Nenhum recurso disponível.")
+        //}
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(resultCode == Activity.RESULT_OK) {
+            var imageBitmap = data!!.extras!!.get("data") as Bitmap
+            imageViewAddTicketImage.setImageBitmap(imageBitmap)
+            viewModel.alterarImagemPerfil(imageBitmap)
         }
     }
 
@@ -109,6 +136,13 @@ class FormTicketFragment : Fragment() {
         editTextDataAddTicket.setText(ticket.data)
         editTextHoraAddTicket.setText(ticket.hora)
         spinnerCategoriaAddTicket.setSelection((spinnerCategoriaAddTicket.getAdapter() as? ArrayAdapter<String>)!!.getPosition(ticket.categoria))
+
+        viewModel.receberFoto()
+        viewModel.imagemPerfil.observe(viewLifecycleOwner, Observer { foto ->
+            if(foto != null) {
+                imageViewAddTicketImage.setImageURI(foto)
+            }
+        })
     }
 
     private fun makeToast(msg: String) {

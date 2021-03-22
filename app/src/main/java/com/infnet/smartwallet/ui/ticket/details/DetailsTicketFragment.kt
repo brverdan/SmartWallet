@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -16,11 +18,6 @@ import kotlinx.android.synthetic.main.details_ticket_fragment.*
 import kotlinx.android.synthetic.main.form_ticket_fragment.*
 
 class DetailsTicketFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = DetailsTicketFragment()
-    }
-
     private lateinit var viewModel: DetailsTicketViewModel
 
     override fun onCreateView(
@@ -28,10 +25,20 @@ class DetailsTicketFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.details_ticket_fragment, container, false)
-        viewModel = ViewModelProvider(this).get(DetailsTicketViewModel::class.java)
+
+        val detailsTicketViewModelFactory = DetailsTicketViewModelFactory(requireActivity().application, TicketDaoFirestore())
+
+        viewModel = ViewModelProvider(this, detailsTicketViewModelFactory).get(DetailsTicketViewModel::class.java)
 
         val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigationTickets)
         bottomNavigationView.visibility = View.GONE
+
+        viewModel.receberFoto()
+        viewModel.imagemPerfil.observe(viewLifecycleOwner, Observer {
+            if(it != null) {
+                imageViewFotoTicketDetails.setImageURI(it)
+            }
+        })
 
         return view
     }

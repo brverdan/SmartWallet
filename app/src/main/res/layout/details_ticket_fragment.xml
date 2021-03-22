@@ -40,7 +40,7 @@
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textLabelNomeDetail"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewFotoTicketDetails" />
 
     <TextView
         android:id="@+id/textLabelNomeDetail"
@@ -52,12 +52,12 @@
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewFotoTicketDetails" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/imageViewFotoTicketDetails"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
         android:layout_marginTop="25dp"
         android:src="@drawable/ic_launcher_background"
         app:layout_constraintEnd_toEndOf="parent"
@@ -133,30 +133,6 @@
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textLabelHorarioDetail"
         app:layout_constraintTop_toBottomOf="@+id/textViewDataDetail" />
-
-    <TextView
-        android:id="@+id/textLabelCodigoDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:shadowColor="#000000"
-        android:text="Código de Barras"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textLabelCategoriaDetail" />
-
-    <TextView
-        android:id="@+id/textViewCodigoDetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="Código de Barras..."
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textLabelCodigoDetail" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabEditTicket"
