@@ -39,6 +39,7 @@ class LoginFragment : Fragment() {
             if(!it.isNullOrBlank())
                 makeToast(it)
         })
+
         return view
     }
 

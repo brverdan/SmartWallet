@@ -76,7 +76,7 @@
         android:textColor="#020202"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeAddTicket" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLocalAddTicket" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayoutLocalAddTicket"
@@ -87,14 +87,14 @@
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textLabelAddImage">
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeAddTicket">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextLocalAddTicket"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Local Ticket"
-            android:inputType="textPostalAddress"/>
+            android:inputType="textPostalAddress" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -106,14 +106,14 @@
         android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayoutLocalAddTicket">
+        app:layout_constraintTop_toBottomOf="@+id/textLabelAddImage">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextNomeAddTicket"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nome Ticket"
-            android:inputType="textPersonName"/>
+            android:inputType="textPersonName" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
