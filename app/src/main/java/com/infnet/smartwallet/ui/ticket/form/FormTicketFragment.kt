@@ -102,10 +102,12 @@ class FormTicketFragment : Fragment() {
             if(categoria == "Selecionar Categoria") {
                 makeToast("Categoria deve ser selecionada!!")
             }
-            if (viewModel.imagemTicket == null) {
-                makeToast("A foto do código de barras/QrCode é obrigatória")
+            else if (!local.isNullOrBlank() && !nome.isNullOrBlank() && !data.isNullOrBlank() && !hora.isNullOrBlank()){
+                viewModel.salvarTicket(nome, local, data, hora, categoria!!)
             }
-            viewModel.salvarTicket(nome, local, data, hora, categoria!!)
+            else {
+                makeToast("Todos os campos devem ser preenchidos!")
+            }
         }
 
         imageViewAddTicketImage.setOnClickListener {
