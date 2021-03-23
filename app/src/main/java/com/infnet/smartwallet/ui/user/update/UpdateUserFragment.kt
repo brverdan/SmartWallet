@@ -44,7 +44,7 @@ class UpdateUserFragment : Fragment() {
             var nome = editTextNomeUpdateUsuario.text.toString()
             var sobrenome = editTextSobrenomeUpdateUsuario.text.toString()
 
-            if(!nome.isNullOrBlank() && !sobrenome.isNullOrBlank()) {
+            if(verificarNomeSobrenomeVazios(nome, sobrenome)) {
                 viewModel.updateUsuario(nome, sobrenome)
             }
             else {
@@ -52,6 +52,8 @@ class UpdateUserFragment : Fragment() {
             }
         }
     }
+
+    fun verificarNomeSobrenomeVazios(nome: String, sobrenome: String) = !nome.isNullOrBlank() && !sobrenome.isNullOrBlank()
 
     private fun makeToast(msg: String) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()

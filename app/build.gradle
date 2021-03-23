@@ -52,6 +52,8 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation 'org.mockito:mockito-core:1.10.19'
+    testImplementation 'androidx.test:core:1.0.0'
 
     //AdMob SDK
     implementation 'com.google.android.gms:play-services-ads:19.7.0'

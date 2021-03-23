@@ -46,8 +46,7 @@ class DetailsTicketFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        super.onViewCreated(view, savedInstanceState)
-        if (ObjetoUtil.ticketSelecionado != null)
+        if (verificarTicketSelecionado())
             preencherDetails(ObjetoUtil.ticketSelecionado!!)
 
         imageViewBackDetailsTicket.setOnClickListener {
@@ -63,6 +62,9 @@ class DetailsTicketFragment : Fragment() {
             findNavController().popBackStack()
         }
     }
+
+    fun verificarTicketSelecionado() = ObjetoUtil.ticketSelecionado != null
+
     private fun preencherDetails (ticket: Ticket){
         textViewLocalDetail.setText(ticket.local)
         textViewDataDetail.setText(ticket.data)

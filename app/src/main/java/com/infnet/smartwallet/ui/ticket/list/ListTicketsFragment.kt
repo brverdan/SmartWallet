@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,13 +28,13 @@ class ListTicketsFragment : Fragment() {
         val listTicketsViewModelFactory = ListTicketViewModelFactory(TicketDaoFirestore())
 
         viewModel = ViewModelProvider(this, listTicketsViewModelFactory).get(ListTicketsViewModel::class.java)
-        viewModel.tickets.observe(viewLifecycleOwner){
+        viewModel.tickets.observe(viewLifecycleOwner, Observer {
             recyclerlistTickets.adapter = RecyclerListTicketAdapter(it) {
                 ObjetoUtil.ticketSelecionado = it
                 findNavController().navigate(R.id.detailsTicketFragment)
             }
             recyclerlistTickets.layoutManager = LinearLayoutManager(requireContext())
-        }
+        })
         viewModel.attListTickets()
 
         val bottomNavigationView: BottomNavigationView = requireActivity().findViewById(R.id.bottomNavigationTickets)

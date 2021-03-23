@@ -49,7 +49,7 @@ class LoginFragment : Fragment() {
         btnLogin.setOnClickListener {
             val email = editTextEmailLogin.text.toString()
             val senha = editTextSenhaLogin.text.toString()
-            if(!email.isNullOrBlank() && !senha.isNullOrBlank()) {
+            if(validarEmailESenha(email, senha)) {
                 viewModel.verificarCredenciais(email, senha)
             }
             else {
@@ -62,5 +62,9 @@ class LoginFragment : Fragment() {
     }
     private fun makeToast(msg: String) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()
+    }
+
+    fun validarEmailESenha(email: String, senha: String) : Boolean {
+        return !email.isNullOrBlank() && !senha.isNullOrBlank()
     }
 }

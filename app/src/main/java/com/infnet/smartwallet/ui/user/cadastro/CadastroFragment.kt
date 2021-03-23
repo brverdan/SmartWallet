@@ -45,9 +45,9 @@ class CadastroFragment : Fragment() {
             val email = editTextEmailCadastro.text.toString()
             val nome = editTextNomeCadastro.text.toString()
             val sobrenome = editTextSobrenomeCadastro.text.toString()
-            if(!email.isNullOrBlank() && !senha.isNullOrBlank() && !resenha.isNullOrBlank() && !nome.isNullOrBlank() && !sobrenome.isNullOrBlank()) {
-                if(senha.length >= 6) {
-                    if(senha == resenha) {
+            if(validarCamposCadastrarUsuario(email, senha, resenha, nome, sobrenome)) {
+                if(verificarTamanhoSenha(senha)) {
+                    if(verificarSenhasIguais(senha, resenha)) {
                         viewModel.salvarCadastro(email, senha, nome, sobrenome)
                     }
                     else {
@@ -68,6 +68,13 @@ class CadastroFragment : Fragment() {
             findNavController().popBackStack()
         }
     }
+
+    fun verificarSenhasIguais(senha: String, resenha: String) = senha == resenha
+
+    fun verificarTamanhoSenha(senha: String) = senha.length >= 6
+
+    fun validarCamposCadastrarUsuario(email: String, senha: String, resenha: String, nome: String, sobrenome: String) =
+        !email.isNullOrBlank() && !senha.isNullOrBlank() && !resenha.isNullOrBlank() && !nome.isNullOrBlank() && !sobrenome.isNullOrBlank()
 
     private fun makeToast(msg: String) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_LONG).show()

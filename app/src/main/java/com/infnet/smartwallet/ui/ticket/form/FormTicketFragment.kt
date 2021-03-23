@@ -99,10 +99,10 @@ class FormTicketFragment : Fragment() {
             val data = editTextDataAddTicket.text.toString()
             val hora = editTextHoraAddTicket.text.toString()
             val categoria = viewModel.categoriaSelecionadaString
-            if(categoria == "Selecionar Categoria") {
+            if(verificarCategoriaPadrao(categoria)) {
                 makeToast("Categoria deve ser selecionada!!")
             }
-            else if (!local.isNullOrBlank() && !nome.isNullOrBlank() && !data.isNullOrBlank() && !hora.isNullOrBlank()){
+            else if (verificarCamposVazios(local, nome, data, hora)){
                 viewModel.salvarTicket(nome, local, data, hora, categoria!!)
             }
             else {
@@ -114,6 +114,12 @@ class FormTicketFragment : Fragment() {
             tirarFoto()
         }
     }
+
+    fun verificarCamposVazios(local: String, nome: String, data: String, hora: String) =
+        !local.isNullOrBlank() && !nome.isNullOrBlank() && !data.isNullOrBlank() && !hora.isNullOrBlank()
+
+    fun verificarCategoriaPadrao(categoria: String?) =
+        categoria == "Selecionar Categoria"
 
     private fun tirarFoto() {
         val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
