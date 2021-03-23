@@ -1,4 +1,4 @@
--Publicação GooglePlay
--Monetização
--Testes (Igu)
--Usabilidade e Acessibilidade
+- Publicação GooglePlay
+- Monetização (Feito ps: mudar o código para os anúncios reais antes de subir para a google play)
+- Testes (Igu)
+- Usabilidade e Acessibilidade
