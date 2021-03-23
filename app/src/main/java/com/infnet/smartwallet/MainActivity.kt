@@ -30,11 +30,5 @@ class MainActivity : AppCompatActivity() {
         val adRequest = AdRequest.Builder().build()
 
         mAdView.loadAd(adRequest)
-
-        mAdView.adListener = object : AdListener() {
-            override fun onAdClicked() {
-                Log.i("AdMob", "Anúncio clicado")
-            }
-        }
     }
 }
