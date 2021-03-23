@@ -36,6 +36,10 @@ class UpdateUserFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        imageViewBackUpdateUsuario.setOnClickListener {
+            findNavController().popBackStack()
+        }
+
         fabSaveUpdateUsuario.setOnClickListener {
             var nome = editTextNomeUpdateUsuario.text.toString()
             var sobrenome = editTextSobrenomeUpdateUsuario.text.toString()
