@@ -18,7 +18,7 @@ import kotlin.random.Random
 
 class TicketDaoFirestore : TicketDao {
 
-    private val collection = FirebaseFirestore.getInstance().collection("tickets")
+    private val collection = FirebaseFirestore.getInstance().collection("ticket")
     private val firebaseAuth = FirebaseAuth.getInstance()
     private val storage = FirebaseStorage.getInstance().reference.child("codigoDeBarrasQrCode")
 

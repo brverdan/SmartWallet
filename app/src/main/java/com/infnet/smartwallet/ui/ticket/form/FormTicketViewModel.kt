@@ -10,6 +10,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.infnet.smartwallet.database.CriptoString
 import com.infnet.smartwallet.database.ObjetoUtil
 import com.infnet.smartwallet.database.TicketDao
 import com.infnet.smartwallet.database.UsuarioFirebaseDao
@@ -39,7 +40,7 @@ class FormTicketViewModel(application: Application, private val ticketDao: Ticke
         _message.value = null
     }
 
-    fun salvarTicket(nome: String, local: String, data: String, hora: String, categoria: String) {
+    fun salvarTicket(nome: String, local: CriptoString, data: String, hora: String, categoria: String) {
         _status.value = false
         _message.value = "Aguarde a persistência..."
 

@@ -7,10 +7,7 @@ import android.util.Log
 import android.view.View
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdView
-import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 

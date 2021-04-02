@@ -1,10 +1,12 @@
 package com.infnet.smartwallet.ui.ticket.details
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -65,8 +67,9 @@ class DetailsTicketFragment : Fragment() {
 
     fun verificarTicketSelecionado() = ObjetoUtil.ticketSelecionado != null
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun preencherDetails (ticket: Ticket){
-        textViewLocalDetail.setText(ticket.local)
+        textViewLocalDetail.setText(ticket.local!!.getClearText())
         textViewDataDetail.setText(ticket.data)
         textViewHorarioDetail.setText(ticket.hora)
         textViewNomeDetail.setText(ticket.nome)

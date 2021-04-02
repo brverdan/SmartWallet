@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -20,6 +22,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.infnet.smartwallet.R
+import com.infnet.smartwallet.database.CriptoString
 import com.infnet.smartwallet.database.ObjetoUtil
 import com.infnet.smartwallet.database.TicketDaoFirestore
 import com.infnet.smartwallet.model.Ticket
@@ -63,6 +66,7 @@ class FormTicketFragment : Fragment() {
         return view
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         ArrayAdapter.createFromResource(requireActivity(), R.array.categorias_array, android.R.layout.simple_spinner_dropdown_item).also { adapter ->
@@ -94,7 +98,8 @@ class FormTicketFragment : Fragment() {
         }
 
         fabSaveTicket.setOnClickListener {
-            val local = editTextLocalAddTicket.text.toString()
+            val local = CriptoString()
+            local.setClearText(editTextLocalAddTicket.text.toString())
             val nome = editTextNomeAddTicket.text.toString()
             val data = editTextDataAddTicket.text.toString()
             val hora = editTextHoraAddTicket.text.toString()
@@ -115,8 +120,9 @@ class FormTicketFragment : Fragment() {
         }
     }
 
-    fun verificarCamposVazios(local: String, nome: String, data: String, hora: String) =
-        !local.isNullOrBlank() && !nome.isNullOrBlank() && !data.isNullOrBlank() && !hora.isNullOrBlank()
+    @RequiresApi(Build.VERSION_CODES.M)
+    fun verificarCamposVazios(local: CriptoString, nome: String, data: String, hora: String) =
+        !local.getClearText().isNullOrBlank() && !nome.isNullOrBlank() && !data.isNullOrBlank() && !hora.isNullOrBlank()
 
     fun verificarCategoriaPadrao(categoria: String?) =
         categoria == "Selecionar Categoria"
@@ -141,8 +147,9 @@ class FormTicketFragment : Fragment() {
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun preencherFormulario(ticket: Ticket) {
-        editTextLocalAddTicket.setText(ticket.local)
+        editTextLocalAddTicket.setText(ticket.local!!.getClearText())
         editTextNomeAddTicket.setText(ticket.nome)
         editTextDataAddTicket.setText(ticket.data)
         editTextHoraAddTicket.setText(ticket.hora)
