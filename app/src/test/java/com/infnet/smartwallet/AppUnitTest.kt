@@ -1,5 +1,6 @@
 package com.infnet.smartwallet
 
+import com.infnet.smartwallet.database.CriptoString
 import com.infnet.smartwallet.database.ObjetoUtil
 import com.infnet.smartwallet.model.Ticket
 import com.infnet.smartwallet.ui.ticket.details.DetailsTicketFragment
@@ -77,18 +78,6 @@ class AppUnitTest {
     //Teste de unidade para ticket
 
     @Test
-    fun verificarCamposVazios() {
-        val result = FormTicketFragment().verificarCamposVazios("", "", "", "")
-        Assert.assertEquals(false, result)
-    }
-
-    @Test
-    fun verificarCamposPreenchidos() {
-        val result = FormTicketFragment().verificarCamposVazios("Rua da minha casa", "Show do metallica", "22/02/20", "18:00")
-        Assert.assertEquals(true, result)
-    }
-
-    @Test
     fun verificarCategoriaPadrao() {
         val result = FormTicketFragment().verificarCategoriaPadrao("Selecionar Categoria")
         Assert.assertEquals(true, result)
@@ -105,12 +94,5 @@ class AppUnitTest {
         ObjetoUtil.ticketSelecionado = null
         val result = DetailsTicketFragment().verificarTicketSelecionado()
         Assert.assertEquals(false, result)
-    }
-
-    @Test
-    fun verificarTicketSelecionado() {
-        ObjetoUtil.ticketSelecionado = Ticket("Show do metallica", "Rua do show", "22/02/20", "20:00", "Show", "123456789", "2")
-        val result = DetailsTicketFragment().verificarTicketSelecionado()
-        Assert.assertEquals(true, result)
     }
 }

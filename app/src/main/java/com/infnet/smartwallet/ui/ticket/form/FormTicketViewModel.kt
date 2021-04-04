@@ -80,6 +80,9 @@ class FormTicketViewModel(application: Application, private val ticketDao: Ticke
                             Log.e("FotoFirestore", "${it.message}")
                         }
             }
+            else{
+                _message.value = "Foto obrigatoria!."
+            }
         }
     }
 
